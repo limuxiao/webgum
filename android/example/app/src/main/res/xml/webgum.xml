@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="webgum" version="2.0.0" xmlns="http://www.w3.org/ns/widgets">
+
+    <name>Webgum Plugins Config</name>
+
+    <feature name="battery" version="1.0.0" value="com.ule.example.plugins.BatteryPlugin"/>
+
+    <feature name="device" version="1.0.0" value="com.ule.example.plugins.DevicePlugin"/>
+
+    <feature name="camera" version="1.0.0" value="com.ule.example.plugins.CameraPlugin"/>
+
+</widget>

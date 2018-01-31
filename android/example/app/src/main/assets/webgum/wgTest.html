@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>wgTest</title>
+	<script src="wg.js"></script>
+</head>
+
+<body>
+
+	<script type="text/javascript">
+
+
+		function testGetOS(){
+			try{
+				var ret = wg.getOS()
+				alert(ret)
+				var plugins = wg.getPlugins()
+				alert(plugins)
+				var battery = wg.getPlugin('battery')
+				var power = battery.getPower()
+				alert(power)
+				wg.addListener("location","localCollect",{timeInterval:"5000"},function(value){
+					alert(value)
+				})
+
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+		function getSystemInfo(){
+			try{
+				var ret = wg.getSystemInfo()
+				alert(ret)
+				alert(window.screen.height)
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+		function getPlugins(){
+			try{
+				var ret = eval("("+wg.getPlugins()+")")
+				alert(ret.battery)
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+		function onBatteryList(){
+			try{
+				wg.addListenerAndroid("battery", "onBatteryChange", "")
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+		function getPluginInfo(){
+			try{
+				var battery = wg.getPlugin('battery')
+				var battery_info = battery.getBaseInfo()
+				alert(battery_info)
+				var camera = wg.getPlugin('camera')
+				var camera_info = camera.getBaseInfo()
+				alert(camera_info)
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+		function getTest(){
+
+			var obj = {
+				name:'haha',
+				age:'18'
+			}
+
+			try{
+				var battery = wg.getPlugin('battery')
+				var result = battery.getTest({name:'haha',age:'18'})
+				alert(result)
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
+	</script>
+
+	<h1>WgTest</h1>
+
+	<div>
+
+		<button id="btn_getOS" onclick="testGetOS();">获取操作系统</button><br/>
+		<button id="btn_getSys" onclick="getSystemInfo();">获取系统信息</button><br/>
+		<button id="btn_getPlu" onclick="getPlugins();">获取插件列表</button><br/>
+		<button id="btn_batteryList" onclick="onBatteryList();">监听电量变化</button><br/>
+		<button id="btn_testName" onclick="getPluginInfo();">获取插件信息</button><br/>
+		<button id="btn_testObj" onclick="getTest();">测试传递对象</button><br/>
+		<button id="btn_test" onclick="alert('hhhh');">测试</button><br/>
+		<a href="http://www.baidu.com" >测试监听跳转</a>
+
+
+
+	</div>
+
+
+
+
+</body>
+</html>

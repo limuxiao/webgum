@@ -1,0 +1,4 @@
+include ':app'
+include ':webgumLib'
+
+project(':webgumLib').projectDir = new File('../webgumLib')

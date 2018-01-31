@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>wgTest</title>
+	<script src="wg.js"></script>
+	<script type="text/javascript">
+
+
+        function getOsInfo(){
+			try{
+				var os = wg.getOsInfo()
+				alert(os)
+			}catch(e){
+				alert(e.message)
+			}
+
+        }
+
+        function testPge(){
+
+			var a = 100
+
+			try{
+				wg.alert(function(data){
+					alert(a)
+					alert(data)
+				})
+			}catch(e){
+				alert(e.message)
+			}
+
+        }
+
+
+
+	</script>
+</head>
+
+<body>
+
+
+
+<h1>WgTest</h1>
+
+<div>
+	<button id="btn_testOS" onclick="getOsInfo();">测试查看系统</button><br/>
+	<button id="btn_testPge" onclick="testPge();">测试闭包问题</button><br/>
+	<a href="http://www.ule.com" >测试监听跳转</a>
+</div>
+
+
+
+
+</body>
+</html>
