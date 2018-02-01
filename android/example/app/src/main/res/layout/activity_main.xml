@@ -7,18 +7,20 @@
     tools:context="com.ule.example.MainActivity">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/activity_main_btn_js"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="JsBridge"
-            android:onClick="toJsBridge"/>
+            android:layout_margin="10dp"
+            android:text="SystemWebView"
+            android:onClick="toSystemWebView"/>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

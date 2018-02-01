@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ule.example.test.TestActivity;
-
 
 public class MainActivity extends Activity {
 
@@ -19,8 +17,8 @@ public class MainActivity extends Activity {
 	}
 
 
-	public void toJsBridge(View view){
-		Intent intent = new Intent(this, TestActivity.class);
+	public void toSystemWebView(View view){
+		Intent intent = new Intent(this, SysWebActivity.class);
 		startActivity(intent);
 	}
 

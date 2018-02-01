@@ -60,24 +60,7 @@ public class SystemWebViewClient extends WebViewClient{
 
 	@Override
 	public void onFormResubmission(WebView view, @NonNull final Message dontResend, final Message resend) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-		builder.setCancelable(false);
-		builder.setTitle("重新提交");
-		builder.setMessage("你想要重新提交你的数据吗？");
-		builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				resend.sendToTarget();
-			}
-		});
-		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dontResend.sendToTarget();
-			}
-		});
-
-		builder.create().show();
+		super.onFormResubmission(view,dontResend,resend);
 	}
 
 	@Override

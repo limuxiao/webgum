@@ -1,0 +1,7 @@
+*.iml
+android/example/.gradle
+android/example/.idea
+android/example/build
+android/example/app/build
+android/example/local.properties
+android/webgumLib/build
