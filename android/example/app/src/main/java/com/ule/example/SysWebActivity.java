@@ -2,10 +2,10 @@ package com.ule.example;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.ule.webgum.core.PluginManager;
 import com.ule.webgum.core.SystemWebView;
 
 /**
@@ -28,8 +28,11 @@ public class SysWebActivity extends Activity{
 		setContentView(R.layout.activity_sys);
 		webView = findViewById(R.id.acty_sys_wv);
 
+		webView.init(new PluginManager());
+
 		String url = "file:///android_asset/webgum/edit.html";
 		webView.loadUrl(url);
+
 
 	}
 

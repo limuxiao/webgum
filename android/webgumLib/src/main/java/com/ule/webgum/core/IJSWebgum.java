@@ -21,8 +21,7 @@ public interface IJSWebgum {
 
 	/**
 	 * 获取插件列表
-	 * @return 返回插件列表, json格式, key为插件名，value为插件版本
-	 *  	示例 {"battery":"1.0.1","camera","2.1.11"...}
+	 * @return
 	 */
 	String getPlugins();
 

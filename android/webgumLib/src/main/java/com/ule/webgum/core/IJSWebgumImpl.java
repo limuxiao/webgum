@@ -56,9 +56,27 @@ public class IJSWebgumImpl implements IJSWebgum{
 		return this.pluginManager.getPlugin(pluginName);
 	}
 
+
+	@JavascriptInterface
+	public String onJsCallWithResult(String req){
+		Log.e("IJSWebgumImpl","onJsCallWithResult 收到参数：" + req);
+		Map<String, String> params = new HashMap<>();
+		params.put("success","true");
+		return new GsonBuilder().create().toJson(params);
+	}
+
+
+	@JavascriptInterface
+	public void onJsCallWithListener(String req){
+
+	}
+
+
+
+
 	@JavascriptInterface
 	public void addListenerAndroid(String pluginName, String actionId, String param){
-		Log.e("IJSWebgum","收到参数：" + pluginName + "," + actionId + "," + param);
+		Log.e("IJSWebgumImpl","收到参数：" + pluginName + "," + actionId + "," + param);
 		IWebgumPlugin plugin = this.pluginManager.getPlugin(pluginName);
 		CallbackContext callbackContext = new CallbackContext(actionId, this.webView);
 		plugin.execute(actionId, param, callbackContext);

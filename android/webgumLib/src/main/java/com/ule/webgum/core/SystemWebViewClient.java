@@ -8,12 +8,17 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @Title:
@@ -25,9 +30,15 @@ import android.webkit.WebViewClient;
 
 public class SystemWebViewClient extends WebViewClient{
 
+	private String preLoadJs;
 
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
+		if(TextUtils.isEmpty(preLoadJs)){
+			preLoadJs = buildJsInject(view.getContext());
+		}
+		view.loadUrl("javascript:" + preLoadJs);
+		super.onPageFinished(view, url);
 		super.onPageStarted(view, url, favicon);
 	}
 
@@ -38,7 +49,6 @@ public class SystemWebViewClient extends WebViewClient{
 
 	@Override
 	public void onPageFinished(WebView view, final String url) {
-		super.onPageFinished(view, url);
 		view.invalidate();
 	}
 
@@ -93,6 +103,23 @@ public class SystemWebViewClient extends WebViewClient{
 		} else {
 			handler.proceed();
 		}
+	}
+
+
+	public String buildJsInject(Context context){
+		StringBuilder sb = new StringBuilder();
+		try {
+			InputStream is = context.getAssets().open("wg_android.js");
+
+			byte[] buffer = new byte[is.available()];
+			is.read(buffer);
+			sb.append(new String(buffer));
+			is.close();
+			Log.e("SystemWebViewClient","----1----:" + sb.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
 	}
 
 }
