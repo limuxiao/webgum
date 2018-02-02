@@ -1,3 +1,5 @@
+var webgum_native_callbacks = {};
+
 function __getType(args){
     var t = Object.prototype.toString.apply(args);
     var type = 0;
@@ -20,16 +22,22 @@ function __getType(args){
 function __callNativeWithResult(id,plugin_name,method_name, args){
     var req = {
         id:id,
-        plugin:plugin_name,
-        method:method_name,
+        pluginName:plugin_name,
+        methodName:method_name,
         params:args
     };
-    var req_str = JSON.stringify(req);
-    var rep_str = wg_android_native.onJsCallWithResult(req_str);
-    return JSON.parse(rep_str);
+    return JSON.parse(wg_android_native.onJsCallWithResult(JSON.stringify(req)));
 };
 
-function __callNativeWithListener(){
+function __callNativeWithListener(id,plugin_name,method_name, args){
+
+     var req = {
+            id:id,
+            pluginName:plugin_name,
+            methodName:method_name,
+            params:args
+        };
+        wg_android_native.onJsCallWithListener(JSON.stringify(req));
 };
 
 function __bridgeWithResult(plugin_name,method_name,args){
@@ -50,20 +58,48 @@ function __bridgeWithResult(plugin_name,method_name,args){
 
 };
 
-function __bridgeWithListener(args){
+function __bridgeWithListener(plugin_name,method_name,args){
+    var id = Math.floor(Math.random() * (1 << 10));
+    var args_real = [];
+    for(var i in args){
+        var name = id + "_" + i;
+        var type = __getType(args[i]);
+        var value = args[i];
+        if(type == 4){
+            webgum_native_callbacks[id + "_"+ plugin_name + "_" + method_name + "_" + i] = value;
+        }
 
+        args_real.push({
+            name:name,
+            type:type,
+            value:value
+        });
+    }
+    __callNativeWithListener(id,plugin_name,method_name,args_real)
 };
 
 var WG_android = function () {
 
-    var callbacks = [];
+    this.onNativeCallback = function(resp){
+        var resp_js = JSON.parse(resp);
+        var call = webgum_native_callbacks[resp_js.id];
+        var type = __getType(call);
+        if (type == 4){
+            call(resp.result);
+        }
+    };
+
 
     this.getOsInfo = function () {
         return __bridgeWithResult('__main__','getOsInfo',arguments)
     };
 
     this.getPlugins = function(){
-        return wg_android_native.getPlugins()
+        return __bridgeWithResult('__main__','getPlugins',arguments)
+    };
+
+    this.test = function(){
+        return __bridgeWithListener('__main__','test',arguments)
     };
 
     this.getPlugin = function(plugin_name){

@@ -25,11 +25,4 @@ public interface IJSWebgum {
 	 */
 	String getPlugins();
 
-	/**
-	 * 根据插件名获取某一插件
-	 * @param pluginName 插件名
-	 * @return 插件对象
-	 */
-	Object getPlugin(String pluginName);
-
 }

@@ -2,6 +2,9 @@ package com.ule.webgum.core;
 
 import android.content.Context;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * @Title:
  * @Desc:
@@ -14,15 +17,31 @@ final public class Webgum {
 
 	private static boolean ready = false;
 
-	public final static void load(Context context){
+	private static String preLoadJs;
 
+	public final static void load(Context context){
+		loadJsFile(context);
 	}
 
-	private final static void loadJsFile(){
-
+	private final static void loadJsFile(Context context){
+		StringBuilder sb = new StringBuilder();
+		try {
+			InputStream is = context.getAssets().open("wg_android.js");
+			byte[] buffer = new byte[is.available()];
+			is.read(buffer);
+			sb.append(new String(buffer));
+			is.close();
+			preLoadJs = sb.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static boolean isReady() {
 		return ready;
+	}
+
+	public static String getPreLoadJs(){
+		return preLoadJs;
 	}
 }
