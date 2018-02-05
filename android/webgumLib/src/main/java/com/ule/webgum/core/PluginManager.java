@@ -13,6 +13,10 @@ import java.util.LinkedHashMap;
 final public class PluginManager {
 
 
+	protected PluginManager(){
+
+	}
+
 
 	/**
 	 * 插件集合

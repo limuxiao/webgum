@@ -1,8 +1,6 @@
 package com.ule.example.plugins;
 
-import com.ule.webgum.core.CallbackContext;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.SystemWebView;
 
 /**
  * @Title:
@@ -15,12 +13,8 @@ import com.ule.webgum.core.SystemWebView;
 public class DevicePlugin extends IWebgumPlugin {
 
 
-	public DevicePlugin(SystemWebView webView, String pluginName, String pluginVersion) {
-		super(webView, pluginName, pluginVersion);
+	public DevicePlugin(String pluginName, String pluginVersion) {
+		super(pluginName, pluginVersion);
 	}
 
-	@Override
-	public void execute(String action, String args, CallbackContext callback) {
-
-	}
 }

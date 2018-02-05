@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.ule.webgum.core.JsBridge;
-import com.ule.webgum.core.PluginManager;
 import com.ule.webgum.core.SystemWebView;
+import com.ule.webgum.core.Webgum;
 
 /**
  * @Title:
@@ -27,9 +27,17 @@ public class SysWebActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sys);
+
+		//下面两步应该放在Application中操作
+		Webgum.init(this);
+		Webgum.addPlugins(PluginsConfig.loadPlugins(this));
+
+
+
+
 		webView = findViewById(R.id.acty_sys_wv);
 
-		webView.init(new PluginManager());
+		webView.init();
 		webView.setJsBridge(new JsBridge(webView) {});
 
 		String url = "file:///android_asset/webgum/edit.html";

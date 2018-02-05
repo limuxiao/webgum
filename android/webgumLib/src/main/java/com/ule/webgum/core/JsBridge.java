@@ -14,6 +14,11 @@ import android.webkit.WebView;
 
 public abstract class JsBridge {
 
+	/**
+	 * 预注入的js内容
+	 */
+	private static String preLoadJs = "";
+
 	private WebView webView;
 
 	public JsBridge(WebView webView) {

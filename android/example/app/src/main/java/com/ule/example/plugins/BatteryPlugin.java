@@ -6,9 +6,13 @@ import android.os.Looper;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 
-import com.ule.webgum.core.CallbackContext;
+import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.SystemWebView;
+import com.ule.webgum.core.JSArgumentParser;
+import com.ule.webgum.core.JSResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Title:
@@ -24,24 +28,21 @@ public class BatteryPlugin extends IWebgumPlugin {
 
 	private BroadcastReceiver receiver;
 
-	public BatteryPlugin(SystemWebView webView, String pluginName, String pluginVersion) {
-		super(webView, pluginName, pluginVersion);
+	public BatteryPlugin(String pluginName, String pluginVersion) {
+		super(pluginName, pluginVersion);
 	}
 
-	@Override
-	public void execute(String action, String args, CallbackContext callback) {
-		switch (action){
-			case ACTION_ON_BATTERY_CHANGE:
-				callback.sendToJs("{\"power\":\"20%\"}");
-				break;
-			default:
-				break;
-		}
-	}
 
-	@JavascriptInterface
+	@JSMethod()
 	public String getPower(){
-		return "35%";
+		Map<String,String> map = new HashMap<>();
+		map.put("power","35%");
+		return JSResult.addCodeMsg(map);
+	}
+
+	@JSMethod()
+	public void getCallback(JSArgumentParser parser){
+		Log.e("BatteryPlugin","getCallback");
 	}
 
 

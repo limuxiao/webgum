@@ -20,7 +20,7 @@ public interface IWebgumView {
 	/**
 	 * 初始化
 	 */
-	void init(PluginManager pm);
+	void init();
 
 
 

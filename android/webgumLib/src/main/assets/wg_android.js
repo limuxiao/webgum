@@ -31,13 +31,13 @@ function __callNativeWithResult(id,plugin_name,method_name, args){
 
 function __callNativeWithListener(id,plugin_name,method_name, args){
 
-     var req = {
-            id:id,
-            pluginName:plugin_name,
-            methodName:method_name,
-            params:args
-        };
-        wg_android_native.onJsCallWithListener(JSON.stringify(req));
+    var req = {
+        id:id,
+        pluginName:plugin_name,
+        methodName:method_name,
+        params:args
+    };
+    wg_android_native.onJsCallWithListener(JSON.stringify(req));
 };
 
 function __bridgeWithResult(plugin_name,method_name,args){
@@ -113,12 +113,3 @@ var WG_android = function () {
 };
 
 window.wg_android = new WG_android();
-
-
-WG_android.prototype.battery = {
-
-    getPower:function(){
-        return "30%";
-    }
-
-};

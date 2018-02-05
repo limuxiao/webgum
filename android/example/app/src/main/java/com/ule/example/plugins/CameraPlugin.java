@@ -1,8 +1,6 @@
 package com.ule.example.plugins;
 
-import com.ule.webgum.core.CallbackContext;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.SystemWebView;
 
 /**
  * @Title:
@@ -16,15 +14,7 @@ public class CameraPlugin extends IWebgumPlugin {
 
 
 
-	public CameraPlugin(SystemWebView webView, String pluginName, String pluginVersion){
-		super(webView, pluginName, pluginVersion);
-	}
-
-
-
-
-	@Override
-	public void execute(String action, String args, CallbackContext callback) {
-
+	public CameraPlugin(String pluginName, String pluginVersion){
+		super(pluginName, pluginVersion);
 	}
 }

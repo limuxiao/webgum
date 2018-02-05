@@ -1,6 +1,5 @@
 package com.ule.webgum.core;
 
-import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
 import com.google.gson.GsonBuilder;
@@ -21,10 +20,9 @@ public abstract class IWebgumPlugin {
 
 	private String pluginName;
 	private String pluginVersion;
-	private WebView webView;
+	protected WebView webView;
 
-	public IWebgumPlugin(WebView webView, String pluginName, String pluginVersion){
-		this.webView = webView;
+	public IWebgumPlugin(String pluginName, String pluginVersion){
 		this.pluginName = pluginName;
 		this.pluginVersion = pluginVersion;
 	}
@@ -33,22 +31,13 @@ public abstract class IWebgumPlugin {
 	 * 	获取插件的基本信息
 	 * @return
 	 */
-	@JSMethod(name="getBaseInfo")
-	@JavascriptInterface
+	@JSMethod()
 	public String getBaseInfo(){
 		Map<String, String> infos = new HashMap<>();
 		infos.put("pluginName",this.pluginName);
 		infos.put("pluginVersion",this.pluginVersion);
 		return new GsonBuilder().create().toJson(infos);
 	}
-
-	/**
-	 * 请求分发
-	 * @param action
-	 * @param args
-	 * @param callback
-	 */
-	public abstract void execute(String action, String args, CallbackContext callback);
 
 
 	public String getName() {
@@ -57,6 +46,10 @@ public abstract class IWebgumPlugin {
 
 	public String getVersion() {
 		return pluginVersion;
+	}
+
+	public void setWebView(WebView webView) {
+		this.webView = webView;
 	}
 
 	public WebView getWebView() {

@@ -96,8 +96,23 @@ public final class JSArgumentParser {
 
 	}
 
+	/**
+	 * 获取参数列表长度
+	 * @return
+	 */
+	public int getParamSize(){
+		return params == null ? 0 : params.size();
+	}
 
-
+	/**
+	 * 根据位置获取参数
+	 * @param index
+	 * @return
+	 */
+	public Parameter getParam(int index){
+		if (params == null) return null;
+		return params.get(index);
+	}
 
 
 	/**

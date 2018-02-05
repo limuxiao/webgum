@@ -31,8 +31,8 @@ public class SystemWebView extends WebView implements IWebgumView{
 	}
 
 
-	public void init(PluginManager pm){
-		this.pluginManager = pm;
+	public void init(){
+		this.pluginManager = Webgum.createManager();
 		// initWebView
 //		setAlwaysDrawnWithCacheEnabled(true);
 //		setAnimationCacheEnabled(true);
