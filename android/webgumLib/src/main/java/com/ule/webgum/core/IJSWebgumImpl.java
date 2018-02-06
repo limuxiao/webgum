@@ -47,6 +47,7 @@ final public class IJSWebgumImpl extends IJSWebgumAbs {
 	public void testCall(JSRequest request, JsResponse response){
 		JSRequest.Parameter parameter = request.getParam(0);
 		JSResult result = new JSResult();
+		result.put("name","testCall");
 		response.send(parameter, result);
 	}
 

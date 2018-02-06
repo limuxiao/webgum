@@ -1,14 +1,11 @@
 package com.ule.example.plugins;
 
 import android.content.BroadcastReceiver;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.webkit.JavascriptInterface;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
 import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
 
 /**
  * @Title:
@@ -30,27 +27,7 @@ public class BatteryPlugin extends IWebgumPlugin {
 
 
 	@JSMethod()
-	public void getPower(){
+	public void getPower(JSRequest request, JsResponse response){
 
 	}
-
-	@JSMethod()
-	public void getCallback(JSRequest parser){
-		Log.e("BatteryPlugin","getCallback");
-	}
-
-
-	@JavascriptInterface
-	public String getTest(final String object){
-		new Handler(Looper.getMainLooper()).post(new Runnable() {
-			@Override
-			public void run() {
-				Log.e("BatteryPlugin","object class" + object);
-			}
-		});
-
-		return "hhhh";
-	}
-
-
 }

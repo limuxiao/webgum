@@ -84,10 +84,10 @@ final public class Webgum {
 		//动态注入js
 		Method[] methods = plugin.getClass().getMethods();
 		for(Method m : methods){
-			// 查找指定注解
-			JSMethod jsMethod = m.getAnnotation(JSMethod.class);
 
-			if(jsMethod != null){
+			if(checkMethod(m)){
+
+				JSMethod jsMethod = m.getAnnotation(JSMethod.class);
 				String name = TextUtils.isEmpty(jsMethod.name()) ? m.getName() : jsMethod.name();
 				sb.append(name + ":function(){");
 				String returnType = m.getReturnType().getSimpleName().toLowerCase();
@@ -98,9 +98,39 @@ final public class Webgum {
 				}
 				sb.append("},");
 			}
+
 		}
 		sb.append("};");
 		preLoadJs += sb.toString();
+	}
+
+	private static boolean checkMethod(Method m){
+		// 检查注解
+		JSMethod jsMethod = m.getAnnotation(JSMethod.class);
+
+		if (jsMethod == null)
+			return false;
+
+		// 检查返回值
+		String returnType = m.getReturnType().getSimpleName().toLowerCase();
+		int type = 0;
+		if (String.class.getSimpleName().toLowerCase().equals(returnType)) type = 1;
+		if (Void.class.getSimpleName().toLowerCase().equals(returnType)) type = 2;
+		if(type == 0)
+			return false;
+
+		// 检查参数
+		Class[] argTypes = m.getParameterTypes();
+		if(argTypes.length == 0){
+			return true;
+		}else if(argTypes.length == 1){
+			return JSRequest.class.getSimpleName().equals(argTypes[0].getSimpleName());
+		}else if(argTypes.length == 2){
+			return JSRequest.class.getSimpleName().equals(argTypes[0].getSimpleName())
+					&& JsResponse.class.getSimpleName().equals(argTypes[1].getSimpleName());
+		}else{
+			return false;
+		}
 	}
 
 	/**
