@@ -2,6 +2,10 @@ package com.ule.webgum.core;
 
 import com.ule.webgum.tools.SystemTool;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,16 +30,25 @@ final public class IJSWebgumImpl extends IJSWebgumAbs {
 		params.put("osVersion", SystemTool.getSystemVersion());
 		params.put("brand", SystemTool.getBrand());
 		params.put("model", SystemTool.getModel());
+		params.put("wgVersion", WEBGUM_VERSION);
 		return JSResult.addCodeMsg(params);
 	}
 
 	@Override
 	public String getPlugins() {
-		Map<String, String> plugins = new HashMap<>();
-		for (IWebgumPlugin plugin : this.pluginManager.pluginMap.values()) {
-			plugins.put(plugin.getName(), plugin.getVersion());
+		JSONObject jsn = new JSONObject();
+		try {
+			jsn.put("code","0000");
+			jsn.put("msg","操作成功");
+			JSONArray jarr = new JSONArray();
+			for(IWebgumPlugin plugin : this.webView.getPluginManager().pluginMap.values()){
+				jarr.put(plugin.getName());
+			}
+			jsn.put("plugins",jarr);
+		} catch (JSONException e) {
+			return new JSResult("1003").toJsonString();
 		}
-		return JSResult.addCodeMsg(plugins);
+		return jsn.toString();
 	}
 
 }

@@ -99,13 +99,7 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 
 	//反射调用方法
 	private String invokeWithResult(Object obj, JSArgumentParser parser) throws Exception{
-		Log.e("IJSWebgumAbs","----2----");
-		Log.e("IJSWebgumAbs","obj：" + obj);
-		Log.e("IJSWebgumAbs","pluginName：" + parser.pluginName);
-		Log.e("IJSWebgumAbs","methodName：" + parser.methodName);
-		Log.e("IJSWebgumAbs","----2----");
 		if(parser.params == null || parser.params.size() <= 0){				//没有参数，调用无参方法
-			Log.e("IJSWebgumAbs","----3----");
 			Method method = obj.getClass().getMethod(parser.methodName);
 			return String.valueOf(method.invoke(obj));
 		}else{

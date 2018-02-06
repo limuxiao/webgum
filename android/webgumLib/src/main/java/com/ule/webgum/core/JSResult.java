@@ -27,6 +27,7 @@ final public class JSResult {
 
 		codeMap.put("1001","模块列表为空");
 		codeMap.put("1002","未找到对应模块");
+		codeMap.put("1003","获取模块列表失败");
 	}
 
 
