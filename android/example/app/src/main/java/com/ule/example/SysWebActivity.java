@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.ule.webgum.core.JsBridge;
 import com.ule.webgum.core.SystemWebView;
 import com.ule.webgum.core.Webgum;
 
@@ -32,13 +31,9 @@ public class SysWebActivity extends Activity{
 		Webgum.init(this);
 		Webgum.addPlugins(PluginsConfig.loadPlugins(this));
 
-
-
-
 		webView = findViewById(R.id.acty_sys_wv);
 
 		webView.init();
-		webView.setJsBridge(new JsBridge(webView) {});
 
 		String url = "file:///android_asset/webgum/edit.html";
 		webView.loadUrl(url);

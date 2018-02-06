@@ -1,8 +1,8 @@
 package com.ule.webgum.core;
 
 import android.util.Log;
+import android.webkit.WebView;
 
-import com.google.gson.GsonBuilder;
 import com.ule.webgum.annotation.JSArgumentType;
 
 import org.json.JSONArray;
@@ -19,28 +19,17 @@ import java.util.List;
  * @Version: 1.0
  */
 
-public final class JSArgumentParser {
+public final class JSRequest {
 
 	public long id;
-	public String pluginName;
-	public String methodName;
+	protected String pluginName;
+	protected String methodName;
 	public List<Parameter> params;
+	public WebView webView;
 
 
-	/**
-	 * 将js传过来的参数解析成java对象
-	 * @param jsonStr
-	 * @return
-	 */
-	public static JSArgumentParser parse(String jsonStr){
-
-		try {
-			return new GsonBuilder().create().fromJson(jsonStr, JSArgumentParser.class);
-		}catch (Exception e){
-			Log.e("JSArgumentParser",e.getMessage());
-			return null;
-		}
-
+	public JSRequest(WebView webView){
+		this.webView = webView;
 	}
 
 
@@ -49,10 +38,10 @@ public final class JSArgumentParser {
 	 * @param jsonStr
 	 * @return
 	 */
-	public static JSArgumentParser parse2(String jsonStr){
+	public static JSRequest parse(WebView webView, String jsonStr){
 
 		try {
-			JSArgumentParser parser = new JSArgumentParser();
+			JSRequest parser = new JSRequest(webView);
 			JSONObject jsn = new JSONObject(jsonStr);
 			if(jsn.has("id")){
 				parser.id = jsn.optLong("id");
@@ -95,6 +84,15 @@ public final class JSArgumentParser {
 		}
 
 	}
+
+	/**
+	 * 生成一个与本JSRequest对象相对应的JSResponse对象
+	 * @return
+	 */
+	protected JsResponse createResponse(){
+		return new JsResponse(this.id,this.pluginName,this.methodName,this.webView);
+	}
+
 
 	/**
 	 * 获取参数列表长度

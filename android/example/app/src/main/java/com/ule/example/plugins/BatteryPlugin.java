@@ -8,11 +8,7 @@ import android.webkit.JavascriptInterface;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.JSArgumentParser;
-import com.ule.webgum.core.JSResult;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.ule.webgum.core.JSRequest;
 
 /**
  * @Title:
@@ -34,14 +30,12 @@ public class BatteryPlugin extends IWebgumPlugin {
 
 
 	@JSMethod()
-	public String getPower(){
-		Map<String,String> map = new HashMap<>();
-		map.put("power","35%");
-		return JSResult.addCodeMsg(map);
+	public void getPower(){
+
 	}
 
 	@JSMethod()
-	public void getCallback(JSArgumentParser parser){
+	public void getCallback(JSRequest parser){
 		Log.e("BatteryPlugin","getCallback");
 	}
 

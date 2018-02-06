@@ -45,7 +45,7 @@ function __bridgeWithResult(plugin_name,method_name,args){
     var id = Math.floor(Math.random() * (1 << 10));
     var args_real = [];
     for(var i in args){
-        var name = id + "_a" + i;
+        var name = id + "_" + i;
         var type = __getType(args[i]);
         var value = args[i];
         args_real.push({
@@ -85,7 +85,7 @@ var WG_android = function () {
         var call = webgum_native_callbacks[resp_js.id];
         var type = __getType(call);
         if (type == 4){
-            call(resp.result);
+            call(resp_js.result);
         }
     };
 
@@ -98,17 +98,13 @@ var WG_android = function () {
         return __bridgeWithResult('__main__','getPlugins',arguments)
     };
 
-    this.test = function(){
-        return __bridgeWithListener('__main__','test',arguments)
-    };
-
     this.getPlugin = function(plugin_name){
         return this[plugin_name];
     };
 
-    this.getName = function(){
-        return __bridgeWithResult(arguments)
-    };
+    this.testCall = function(){
+        __bridgeWithListener("__main__","testCall",arguments);
+    }
 
 };
 

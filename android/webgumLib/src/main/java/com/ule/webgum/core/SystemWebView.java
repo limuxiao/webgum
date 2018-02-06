@@ -18,7 +18,6 @@ public class SystemWebView extends WebView implements IWebgumView{
 
 	private Context context;
 	private PluginManager pluginManager;
-	private JsBridge jsBridge;
 
 	public SystemWebView(Context context) {
 		super(context);
@@ -61,14 +60,6 @@ public class SystemWebView extends WebView implements IWebgumView{
 		addJavascriptInterface(new IJSWebgumImpl(this), "wg_android_native");
 	}
 
-
-	public void setJsBridge(JsBridge jsBridge) {
-		this.jsBridge = jsBridge;
-	}
-
-	public JsBridge getJsBridge() {
-		return jsBridge;
-	}
 
 	public PluginManager getPluginManager() {
 		return this.pluginManager;

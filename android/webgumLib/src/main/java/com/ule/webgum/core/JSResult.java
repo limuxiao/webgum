@@ -13,7 +13,7 @@ import java.util.Map;
  * @Version: 1.0
  */
 
-final public class JSResult {
+final public class JSResult<V> {
 
 
 	private static final Map<String,String> codeMap = new HashMap<>();
@@ -32,14 +32,13 @@ final public class JSResult {
 
 
 
-	private boolean status;
-	private String code;
-	private String msg;
+	private Map<String, Object> map;
 
 	public JSResult(boolean status,String code, String msg) {
-		this.status = status;
-		this.code = code;
-		this.msg = msg;
+		this.map = new HashMap<>();
+		this.map.put("status",status);
+		this.map.put("code",code);
+		this.map.put("msg",msg);
 	}
 
 	public JSResult(boolean status, String code){
@@ -50,30 +49,24 @@ final public class JSResult {
 		this("0000".equals(code), code);
 	}
 
-	public static String addCodeMsg(boolean status,String code,String msg,Map map){
-		if(map == null)
-			return new JSResult("9992").toJsonString();
-
-		map.put("status",status);
-		map.put("code",code);
-		map.put("msg",msg);
-		return new GsonBuilder().create().toJson(map);
+	public JSResult(){
+		this("0000");
 	}
 
-	public static String addCodeMsg(String code,String msg,Map map){
-		return addCodeMsg("0000".equals(code),code,msg,map);
+	public void put(String key, V value){
+		this.map.put(key, value);
 	}
 
-	public static String addCodeMsg(String code,Map map){
-		return addCodeMsg("0000".equals(code),code,codeMap.get(code),map);
-	}
-
-	public static String addCodeMsg(Map map){
-		return addCodeMsg("0000",map);
+	public V get(String key){
+		return (V) this.map.get(key);
 	}
 
 	public String toJsonString(){
-		return new GsonBuilder().create().toJson(this);
+		return new GsonBuilder().create().toJson(this.map);
 	}
 
+	@Override
+	public String toString() {
+		return this.toJsonString();
+	}
 }
