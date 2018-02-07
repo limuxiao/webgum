@@ -89,6 +89,11 @@ var WG_android = function () {
         }
     };
 
+    this.deleteCallback = function(resp){
+        var resp_js = JSON.parse(resp);
+        delete(webgum_native_callbacks[resp_js.id])
+    };
+
 
     this.getOsInfo = function () {
         return __bridgeWithResult('__main__','getOsInfo',arguments)
