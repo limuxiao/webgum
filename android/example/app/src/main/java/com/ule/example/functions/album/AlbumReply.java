@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import com.ule.example.functions.common.IReply;
 import com.ule.webgum.core.JSRequest;
@@ -69,9 +70,13 @@ public class AlbumReply implements IReply {
                 Bitmap bitmap = ImageTool.getBitmap(file.getPath());
                 bitmap = ImageTool.compressAndGenImage(bitmap,500);
                 String imageBase64 = ImageTool.bitmapToBase64(bitmap,100);
+                imageBase64 = imageBase64.replaceAll("\n","");
+
+                Log.e("AlbumReply",imageBase64);
+
                 JSResult result = new JSResult();
                 result.put("imagePath", path);
-                result.put("imageBase64", "ABCDEFGHIJKLMNOPQRSTUVWXYabcdefghijklmnopqrstuvwxy");
+                result.put("imageBase64", imageBase64);
                 response.send(param, result);
             } else {
                 response.send(param, new JSResult(false,"9990","用户取消"));

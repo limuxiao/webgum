@@ -43,6 +43,9 @@ public class JsResponse {
 			public void run() {
 
 				String s = "{\"id\":\"" + f_id + "\",\"result\":"+ result.toJsonString() +"}";
+
+				Log.e("JsResponse","" + s);
+
 				webView.loadUrl("javascript:wg.onNativeCallback('"+ s +"')");
 			}
 		});

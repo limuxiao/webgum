@@ -29,6 +29,12 @@
                     ele.innerText = str
                 }
 
+                this.showImg = function(data){
+                    var d = "data:image/jpg;base64," + data
+                    var ele = document.getElementById('img_album')
+                    ele.src = d
+                }
+
             }
 
             window.L = new MyLog()
@@ -47,6 +53,8 @@
             function jsClear(){
                 document.getElementById('tt_edit').value = ''
             }
+
+
 
 
         </script>
@@ -77,8 +85,13 @@
         </div>
 
 
+
+
+
         <button id="btn_exe" onclick="jsRun();" style="width: 25%; height: 40px">执行</button>
         <button id="btn_clear" onclick="jsClear();" style="width: 25%; height: 40px">清空</button>
+        <br/>
+        <img id="img_album" style="width:200px; height:200px" src=""/>
 
     </body>
 
