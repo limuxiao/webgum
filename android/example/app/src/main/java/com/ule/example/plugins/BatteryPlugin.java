@@ -1,6 +1,8 @@
 package com.ule.example.plugins;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
@@ -17,9 +19,7 @@ import com.ule.webgum.sysweb.JsResponse;
 
 public class BatteryPlugin extends IWebgumPlugin {
 
-	public static final String ACTION_ON_BATTERY_CHANGE = "onBatteryChange";
-
-	private BroadcastReceiver receiver;
+	private BatteryBroadcastReceiver receiver;
 
 	public BatteryPlugin(String pluginName, String pluginVersion) {
 		super(pluginName, pluginVersion);
@@ -29,5 +29,22 @@ public class BatteryPlugin extends IWebgumPlugin {
 	@JSMethod()
 	public void getPower(JSRequest request, JsResponse response){
 
+	}
+
+
+	class BatteryBroadcastReceiver extends BroadcastReceiver{
+
+		private JSRequest request;
+		private JsResponse response;
+
+		public BatteryBroadcastReceiver(JSRequest request, JsResponse response) {
+			this.request = request;
+			this.response = response;
+		}
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+
+		}
 	}
 }

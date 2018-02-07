@@ -2,11 +2,7 @@ package com.ule.webgum.core;
 
 import android.webkit.WebView;
 
-import com.google.gson.GsonBuilder;
 import com.ule.webgum.annotation.JSMethod;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Title:
@@ -33,10 +29,10 @@ public abstract class IWebgumPlugin {
 	 */
 	@JSMethod()
 	public String getBaseInfo(){
-		Map<String, String> infos = new HashMap<>();
-		infos.put("pluginName",this.pluginName);
-		infos.put("pluginVersion",this.pluginVersion);
-		return new GsonBuilder().create().toJson(infos);
+		JSResult result = new JSResult();
+		result.put("pluginName",this.pluginName);
+		result.put("pluginVersion",this.pluginVersion);
+		return result.toJsonString();
 	}
 
 

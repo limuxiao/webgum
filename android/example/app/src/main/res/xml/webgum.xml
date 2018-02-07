@@ -9,4 +9,6 @@
 
     <feature name="camera" version="1.0.0" value="com.ule.example.plugins.CameraPlugin"/>
 
+    <feature name="network" version="1.0.0" value="com.ule.example.plugins.NetWorkPlugin"/>
+
 </widget>
