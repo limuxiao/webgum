@@ -1,10 +1,13 @@
 package com.ule.example;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.ule.example.functions.common.IReply;
+import com.ule.example.functions.common.ReplyManager;
 import com.ule.webgum.core.SystemWebView;
 import com.ule.webgum.core.Webgum;
 
@@ -46,6 +49,17 @@ public class SysWebActivity extends Activity{
 		String url = ((EditText)findViewById(R.id.acty_sys_ed)).getText().toString();
 		webView.loadUrl(url);
 	}
+
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		IReply reply = ReplyManager.getReply(requestCode);
+		if(reply != null){
+			reply.reply(data);
+			ReplyManager.removeReply(reply);
+		}
+	}
+
 
 
 }
