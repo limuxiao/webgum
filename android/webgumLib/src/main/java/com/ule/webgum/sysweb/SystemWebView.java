@@ -1,10 +1,14 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+
+import com.ule.webgum.core.IWebgumView;
+import com.ule.webgum.PluginManager;
+import com.ule.webgum.Webgum;
 
 /**
  * @Title:
@@ -14,7 +18,7 @@ import android.webkit.WebView;
  * @Version: 1.0
  */
 
-public class SystemWebView extends WebView implements IWebgumView{
+public class SystemWebView extends WebView implements IWebgumView {
 
 	private Context context;
 	private PluginManager pluginManager;

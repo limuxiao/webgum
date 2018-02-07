@@ -8,8 +8,8 @@ import android.widget.EditText;
 
 import com.ule.example.functions.common.IReply;
 import com.ule.example.functions.common.ReplyManager;
-import com.ule.webgum.core.SystemWebView;
-import com.ule.webgum.core.Webgum;
+import com.ule.webgum.sysweb.SystemWebView;
+import com.ule.webgum.Webgum;
 
 /**
  * @Title:

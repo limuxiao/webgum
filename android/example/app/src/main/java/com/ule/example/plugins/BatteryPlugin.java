@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.JSRequest;
-import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.sysweb.JSRequest;
+import com.ule.webgum.sysweb.JsResponse;
 
 /**
  * @Title:

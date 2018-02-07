@@ -15,7 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.ule.example.R;
-import com.ule.webgum.core.SystemWebSettingTool;
+import com.ule.webgum.sysweb.SystemWebSettingTool;
 
 import java.io.IOException;
 import java.io.InputStream;

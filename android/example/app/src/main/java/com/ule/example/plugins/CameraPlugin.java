@@ -8,9 +8,8 @@ import com.ule.example.functions.album.AlbumReply;
 import com.ule.example.functions.common.ReplyManager;
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.core.JSRequest;
-import com.ule.webgum.core.JSResult;
-import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.sysweb.JSRequest;
+import com.ule.webgum.sysweb.JsResponse;
 
 /**
  * @Title:
@@ -37,16 +36,4 @@ public class CameraPlugin extends IWebgumPlugin {
 		ReplyManager.addReply(albumReply);
 		acty.startActivityForResult(openAlbumIntent, albumReply.getId());
 	}
-
-
-	@JSMethod
-	public void test(JSRequest request, JsResponse response){
-		JSRequest.Parameter param = request.getParam(0);
-		JSResult result = new JSResult();
-		result.put("test","22");
-		response.send(param, result);
-	}
-
-
-
 }

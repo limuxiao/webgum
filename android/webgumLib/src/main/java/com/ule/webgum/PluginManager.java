@@ -1,4 +1,6 @@
-package com.ule.webgum.core;
+package com.ule.webgum;
+
+import com.ule.webgum.core.IWebgumPlugin;
 
 import java.util.LinkedHashMap;
 
@@ -21,7 +23,7 @@ final public class PluginManager {
 	/**
 	 * 插件集合
 	 */
-	protected final LinkedHashMap<String, IWebgumPlugin> pluginMap = new LinkedHashMap<>();
+	public final LinkedHashMap<String, IWebgumPlugin> pluginMap = new LinkedHashMap<>();
 
 
 	public final PluginManager addPlugin(IWebgumPlugin plugin){

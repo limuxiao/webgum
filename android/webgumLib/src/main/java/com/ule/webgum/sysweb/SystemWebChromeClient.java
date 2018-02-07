@@ -1,9 +1,11 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
+import com.ule.webgum.core.IWebgumChromeClient;
 
 /**
  * @Title:
@@ -11,9 +13,11 @@ import android.webkit.WebView;
  * @CreateTime: 2018-02-01 10:47
  * @Creator: Liy
  * @Version: 1.0
+ *
+ * {@link IWebgumChromeClient}
  */
 
-public class SystemWebChromeClient extends WebChromeClient {
+public class SystemWebChromeClient extends WebChromeClient implements IWebgumChromeClient{
 
 	@Override
 	public void onProgressChanged(WebView view, int progress) {

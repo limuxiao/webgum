@@ -1,5 +1,7 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
+import com.ule.webgum.core.IWebgumPlugin;
+import com.ule.webgum.core.JSResult;
 import com.ule.webgum.tools.SystemTool;
 
 import java.util.ArrayList;

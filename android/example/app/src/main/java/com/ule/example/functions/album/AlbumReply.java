@@ -11,9 +11,9 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import com.ule.example.functions.common.IReply;
-import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.sysweb.JSRequest;
 import com.ule.webgum.core.JSResult;
-import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.sysweb.JsResponse;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.content.Context;
 import android.os.Build;

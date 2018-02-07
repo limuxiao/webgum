@@ -1,7 +1,12 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
+
+import com.ule.webgum.PluginManager;
+import com.ule.webgum.core.IJSWebgum;
+import com.ule.webgum.core.IWebgumPlugin;
+import com.ule.webgum.core.JSResult;
 
 import java.lang.reflect.Method;
 

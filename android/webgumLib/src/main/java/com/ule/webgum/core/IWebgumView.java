@@ -1,12 +1,14 @@
 package com.ule.webgum.core;
 
+import com.ule.webgum.PluginManager;
+
 /**
  * @Title:	IWebgumView		webView 接口
  * @Desc:
  *
  * 			定义此接口的目的是为了以后的扩展，
  *
- * 				在安卓项目里可能已经存在了自定义的webview，如果想使用webgum，
+ * 				在安卓项目里可能已经存在了自定义的webview或crosswalk，如果想使用webgum，
  * 			无需在去写一个支持webgum的webview，只需要实现此接口即可。
  *
  * @CreateTime: 2018-01-31 17:15

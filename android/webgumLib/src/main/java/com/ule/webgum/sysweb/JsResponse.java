@@ -1,4 +1,4 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -6,6 +6,7 @@ import android.util.Log;
 import android.webkit.WebView;
 
 import com.ule.webgum.annotation.JSArgumentType;
+import com.ule.webgum.core.JSResult;
 
 /**
  * @Title:
@@ -18,8 +19,8 @@ import com.ule.webgum.annotation.JSArgumentType;
 public class JsResponse {
 
 	public long id;
-	public String pluginName;
-	public String methodName;
+	protected String pluginName;
+	protected String methodName;
 	private WebView webView;
 
 

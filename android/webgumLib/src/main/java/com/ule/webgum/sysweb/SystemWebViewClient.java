@@ -1,4 +1,4 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,15 +17,20 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.ule.webgum.core.IWebgumViewClient;
+import com.ule.webgum.Webgum;
+
 /**
  * @Title:
  * @Desc:
  * @CreateTime: 2018-01-31 17:54
  * @Creator: Liy
  * @Version: 1.0
+ *
+ * {@link IWebgumViewClient}
  */
 
-public class SystemWebViewClient extends WebViewClient{
+public class SystemWebViewClient extends WebViewClient implements IWebgumViewClient{
 
 	private String preLoadJs;
 
