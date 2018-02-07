@@ -30,9 +30,6 @@ public class SysWebActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sys);
 
-		//下面两步应该放在Application中操作
-		Webgum.init(this);
-		Webgum.addPlugins(PluginsConfig.loadPlugins(this));
 
 		webView = findViewById(R.id.acty_sys_wv);
 
