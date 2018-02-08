@@ -11,4 +11,6 @@
 
     <feature name="network" version="1.0.0" value="com.ule.example.plugins.NetWorkPlugin"/>
 
+    <feature name="location" version="1.0.0" value="com.ule.example.plugins.LocationPlugin"/>
+
 </widget>

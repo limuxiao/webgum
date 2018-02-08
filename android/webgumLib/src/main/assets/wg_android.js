@@ -89,6 +89,9 @@ var WG_android = function () {
         }
     };
 
+    this.onNativeError = function(resp){
+    };
+
     this.deleteCallback = function(resp){
         var resp_js = JSON.parse(resp);
         delete(webgum_native_callbacks[resp_js.id])

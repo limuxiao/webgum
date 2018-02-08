@@ -31,6 +31,11 @@ public class JsResponse {
 		this.webView = webView;
 	}
 
+	/**
+	 * 发送正常的数据
+	 * @param param
+	 * @param result
+	 */
 	public synchronized void send(JSRequest.Parameter param, final JSResult result){
 
 		if(param == null || param.type != JSArgumentType.TYPE_FUNCTION) return;
@@ -51,6 +56,19 @@ public class JsResponse {
 			}
 		});
 
+	}
+
+	/**
+	 * 发送错误信息
+	 * @param result
+	 */
+	public synchronized void sendErr(final JSResult result){
+		new Handler(Looper.getMainLooper()).post(new Runnable() {
+			@Override
+			public void run() {
+				webView.loadUrl("javascript:wg.onNativeError('"+ result.toJsonString() +"')");
+			}
+		});
 	}
 
 }

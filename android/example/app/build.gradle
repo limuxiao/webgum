@@ -16,6 +16,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+        debug {
+            storeFile file("./src/main/keystore/ule.keystore")
+            keyAlias "ule.keystore"
+            keyPassword "123456"
+            storePassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled false
+        }
+        release {
+            storeFile file("./src/main/keystore/ule.keystore")
+            keyAlias "ule.keystore"
+            keyPassword "123456"
+            storePassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled false
+        }
+    }
 }
 
 dependencies {
@@ -23,6 +41,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    compile files('libs/BaiduLBS_Android.jar')
     compile project(':webgumLib')
 
 }

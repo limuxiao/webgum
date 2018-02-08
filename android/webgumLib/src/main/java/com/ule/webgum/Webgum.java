@@ -95,9 +95,9 @@ final public class Webgum {
 				sb.append(name + ":function(){");
 				String returnType = m.getReturnType().getSimpleName().toLowerCase();
 				if(String.class.getSimpleName().toLowerCase().equals(returnType)){
-					sb.append("return __bridgeWithResult('"+ plugin.getName() +"','"+ name +"',arguments)");
+					sb.append("return __bridgeWithResult('"+ plugin.getName() +"','"+ m.getName() +"',arguments)");
 				}else if(Void.class.getSimpleName().toLowerCase().equals(returnType)){
-					sb.append("__bridgeWithListener('"+ plugin.getName() +"','"+ name +"',arguments)");
+					sb.append("__bridgeWithListener('"+ plugin.getName() +"','"+ m.getName() +"',arguments)");
 				}
 				sb.append("},");
 			}
