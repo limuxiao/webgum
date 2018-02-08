@@ -17,4 +17,8 @@ public class DevicePlugin extends IWebgumPlugin {
 		super(pluginName, pluginVersion);
 	}
 
+
+	
+
+
 }
