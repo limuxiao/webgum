@@ -17,6 +17,16 @@ import com.ule.webgum.Webgum;
  * @CreateTime: 2018-02-01 09:45
  * @Creator: Liy
  * @Version: 1.0
+ *
+ *
+ *  微信分享  音视频
+	拨打电话
+	通讯录
+	相册/相机
+	定位
+	网络
+ *
+ *
  */
 
 public class SysWebActivity extends Activity{
