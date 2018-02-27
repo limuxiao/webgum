@@ -3,6 +3,8 @@ package com.ule.webgum.core;
 import android.content.Context;
 
 import com.ule.webgum.PluginManager;
+import com.ule.webgum.sysweb.SystemWebChromeClient;
+import com.ule.webgum.sysweb.SystemWebViewClient;
 
 /**
  * @Title:	IWebgumView		webView 接口
@@ -47,6 +49,20 @@ public interface IWebgumView {
 	 * @return
 	 */
 	Context getContext();
+
+
+	/**
+	 * 设置viewClient
+	 * @param webViewClient
+	 */
+	void setWebgumViewClient(IWebgumViewClient webViewClient);
+
+
+	/**
+	 * 设置ChromeClient
+	 * @param webChromeClient
+	 */
+	void setWebgumChromeClient(IWebgumChromeClient webChromeClient);
 
 
 }

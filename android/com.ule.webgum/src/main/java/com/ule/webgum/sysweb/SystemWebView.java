@@ -4,8 +4,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import com.ule.webgum.core.IWebgumChromeClient;
+import com.ule.webgum.core.IWebgumViewClient;
 import com.ule.webgum.core.JSWebgumImpl;
 import com.ule.webgum.core.IWebgumView;
 import com.ule.webgum.PluginManager;
@@ -57,8 +61,8 @@ public class SystemWebView extends WebView implements IWebgumView {
 		setVerticalScrollBarEnabled(false);
 		setScrollbarFadingEnabled(true);
 
-		setWebViewClient(new SystemWebViewClient());
-		setWebChromeClient(new SystemWebChromeClient());
+		setWebgumViewClient(new SystemWebViewClient());
+		setWebgumChromeClient(new SystemWebChromeClient());
 
 		SystemWebSettingTool.settingWebView(context,this);
 
@@ -66,8 +70,20 @@ public class SystemWebView extends WebView implements IWebgumView {
 	}
 
 
+
+	@Override
 	public PluginManager getPluginManager() {
 		return this.pluginManager;
+	}
+
+	@Override
+	public void setWebgumViewClient(IWebgumViewClient webViewClient) {
+		setWebViewClient((WebViewClient) webViewClient);
+	}
+
+	@Override
+	public void setWebgumChromeClient(IWebgumChromeClient webChromeClient) {
+		setWebChromeClient((WebChromeClient) webChromeClient);
 	}
 
 }
