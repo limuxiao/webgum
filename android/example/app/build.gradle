@@ -42,5 +42,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile project(':com.ule.webgum')
+    compile (name: "xwalk_core_library-22.52.561.4", ext: "aar")
 
 }

@@ -21,8 +21,8 @@ import java.util.List;
 
 final public class JSWebgumImpl extends IJSWebgumAbs {
 
-	public JSWebgumImpl(SystemWebView webView) {
-		super(webView);
+	public JSWebgumImpl(IWebgumView webgumView) {
+		super(webgumView);
 	}
 
 	@Override

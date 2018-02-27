@@ -5,8 +5,6 @@ import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
-import com.ule.webgum.core.IWebgumChromeClient;
-
 /**
  * @Title:
  * @Desc:
@@ -17,7 +15,7 @@ import com.ule.webgum.core.IWebgumChromeClient;
  * {@link IWebgumChromeClient}
  */
 
-public class SystemWebChromeClient extends WebChromeClient implements IWebgumChromeClient{
+public class SystemWebChromeClient extends WebChromeClient{
 
 	@Override
 	public void onProgressChanged(WebView view, int progress) {

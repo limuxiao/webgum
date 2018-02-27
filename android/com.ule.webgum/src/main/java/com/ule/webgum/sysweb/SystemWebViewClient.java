@@ -17,7 +17,6 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.ule.webgum.core.IWebgumViewClient;
 import com.ule.webgum.Webgum;
 
 /**
@@ -30,7 +29,7 @@ import com.ule.webgum.Webgum;
  * {@link IWebgumViewClient}
  */
 
-public class SystemWebViewClient extends WebViewClient implements IWebgumViewClient{
+public class SystemWebViewClient extends WebViewClient{
 
 	private String preLoadJs;
 

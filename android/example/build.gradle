@@ -15,9 +15,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-    }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+        flatDir {          // <--- add this line
+            dirs 'libs'    // <--- add this line
+        }                  // <--- add this line
+    }
 }

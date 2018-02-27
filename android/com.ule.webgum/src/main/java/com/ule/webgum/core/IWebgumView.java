@@ -50,19 +50,4 @@ public interface IWebgumView {
 	 */
 	Context getContext();
 
-
-	/**
-	 * 设置viewClient
-	 * @param webViewClient
-	 */
-	void setWebgumViewClient(IWebgumViewClient webViewClient);
-
-
-	/**
-	 * 设置ChromeClient
-	 * @param webChromeClient
-	 */
-	void setWebgumChromeClient(IWebgumChromeClient webChromeClient);
-
-
 }
