@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.ule.example.functions.common.IReply;
-import com.ule.example.functions.common.ReplyManager;
+import com.ule.webgum.replys.IReply;
+import com.ule.webgum.replys.ReplyManager;
 import com.ule.webgum.sysweb.SystemWebView;
-import com.ule.webgum.Webgum;
 
 /**
  * @Title:

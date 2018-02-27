@@ -6,6 +6,8 @@ import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import com.ule.webgum.core.JSWebgumImpl;
+
 /**
  * @Title:
  * @Desc:
@@ -57,7 +59,7 @@ final public class SystemWebSettingTool {
 		webSettings.setSaveFormData(true);
 
 		StringBuilder sb = new StringBuilder(webSettings.getUserAgentString());
-		sb.append(" Webgum/" + IJSWebgumImpl.WEBGUM_VERSION + " (" + IJSWebgumImpl.WEBGUM_OS + ")");
+		sb.append(" Webgum/" + JSWebgumImpl.WEBGUM_VERSION + " (" + JSWebgumImpl.WEBGUM_OS + ")");
 		webSettings.setUserAgentString(sb.toString());
 		Log.e("SystemWebSettingTool",sb.toString());
 		webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);

@@ -16,9 +16,28 @@
             android:id="@+id/activity_main_btn_js"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="4dp"
             android:text="SystemWebView"
             android:onClick="toSystemWebView"/>
+
+        <Button
+            android:id="@+id/activity_main_btn_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="获取手机通讯录"
+            android:onClick="toPhoneList"/>
+
+        <Button
+            android:id="@+id/activity_main_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="添加联系人"
+            android:onClick="testAddContacts"/>
+
+
+
 
 
     </LinearLayout>

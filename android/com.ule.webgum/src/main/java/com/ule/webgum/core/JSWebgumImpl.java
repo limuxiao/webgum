@@ -1,7 +1,11 @@
-package com.ule.webgum.sysweb;
+package com.ule.webgum.core;
 
+import com.ule.webgum.core.IJSWebgumAbs;
 import com.ule.webgum.core.IWebgumPlugin;
+import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JSResult;
+import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.sysweb.SystemWebView;
 import com.ule.webgum.tools.SystemTool;
 
 import java.util.ArrayList;
@@ -15,9 +19,9 @@ import java.util.List;
  * @Version: 1.0
  */
 
-final public class IJSWebgumImpl extends IJSWebgumAbs {
+final public class JSWebgumImpl extends IJSWebgumAbs {
 
-	public IJSWebgumImpl(SystemWebView webView) {
+	public JSWebgumImpl(SystemWebView webView) {
 		super(webView);
 	}
 
@@ -38,7 +42,7 @@ final public class IJSWebgumImpl extends IJSWebgumAbs {
 
 		List<String> list = new ArrayList<>();
 
-		for(IWebgumPlugin plugin : this.webView.getPluginManager().pluginMap.values()){
+		for(IWebgumPlugin plugin : this.webgumView.getPluginManager().pluginMap.values()){
 			list.add(plugin.getName());
 		}
 		result.put("plugins",list);

@@ -6,6 +6,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
+import com.ule.webgum.core.JSWebgumImpl;
 import com.ule.webgum.core.IWebgumView;
 import com.ule.webgum.PluginManager;
 import com.ule.webgum.Webgum;
@@ -61,7 +62,7 @@ public class SystemWebView extends WebView implements IWebgumView {
 
 		SystemWebSettingTool.settingWebView(context,this);
 
-		addJavascriptInterface(new IJSWebgumImpl(this), "wg_android_native");
+		addJavascriptInterface(new JSWebgumImpl(this), "wg_android_native");
 	}
 
 

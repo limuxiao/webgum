@@ -1,4 +1,4 @@
-package com.ule.example.functions.album;
+package com.ule.webgum.replys;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,10 +6,11 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 
-import com.ule.example.functions.common.IReply;
+import com.ule.webgum.replys.IReply;
 import com.ule.webgum.core.JSResult;
-import com.ule.webgum.sysweb.JSRequest;
-import com.ule.webgum.sysweb.JsResponse;
+import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.tools.ImageTool;
 
 import java.io.File;
 

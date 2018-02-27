@@ -1,4 +1,4 @@
 include ':app'
-include ':webgumLib'
+include ':com.ule.webgum'
 
-project(':webgumLib').projectDir = new File('../webgumLib')
+project(':com.ule.webgum').projectDir = new File('../com.ule.webgum')

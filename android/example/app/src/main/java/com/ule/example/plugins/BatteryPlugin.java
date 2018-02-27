@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.view.View;
-import android.webkit.WebView;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.sysweb.JSRequest;
-import com.ule.webgum.sysweb.JsResponse;
+import com.ule.webgum.core.IWebgumView;
+import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
 
 /**
  * @Title:
@@ -35,12 +35,12 @@ public class BatteryPlugin extends IWebgumPlugin {
 		if (receiver == null){
 			receiver = new BatteryBroadcastReceiver(request, response);
 		}
-		registBattery(request.webView);
+		registBattery(request.webgumView);
 	}
 
 
 	//注册电量监听的Broadcastreceiver
-	public void registBattery(WebView view){
+	public void registBattery(IWebgumView view){
 		IntentFilter intentFilter=getFilter();
 		view.getContext().registerReceiver(receiver,intentFilter);
 

@@ -8,8 +8,8 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.sysweb.JSRequest;
-import com.ule.webgum.sysweb.JsResponse;
+import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
 
 /**
  * @Title:
@@ -36,7 +36,7 @@ public class LocationPlugin extends IWebgumPlugin {
         Log.e("LocationPlugin","getLocal");
 
         // 定位初始化
-        mLocClient = new LocationClient(request.webView.getContext());
+        mLocClient = new LocationClient(request.webgumView.getContext());
         mLocClient.registerLocationListener(new MyLocationListenner());
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true);// 打开gps

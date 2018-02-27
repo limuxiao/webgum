@@ -1,4 +1,4 @@
-package com.ule.webgum.sysweb;
+package com.ule.webgum.core;
 
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
@@ -6,7 +6,10 @@ import android.webkit.JavascriptInterface;
 import com.ule.webgum.PluginManager;
 import com.ule.webgum.core.IJSWebgum;
 import com.ule.webgum.core.IWebgumPlugin;
+import com.ule.webgum.core.IWebgumView;
+import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JSResult;
+import com.ule.webgum.core.JsResponse;
 
 import java.lang.reflect.Method;
 
@@ -23,11 +26,11 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 	public static final String PLUGIN_MAIN = "__main__";
 
 	protected PluginManager pluginManager;
-	protected SystemWebView webView;
+	protected IWebgumView webgumView;
 
-	public IJSWebgumAbs(SystemWebView webView) {
-		this.webView = webView;
-		this.pluginManager = this.webView.getPluginManager();
+	public IJSWebgumAbs(IWebgumView webgumView) {
+		this.webgumView = webgumView;
+		this.pluginManager = this.webgumView.getPluginManager();
 	}
 
 	/**
@@ -37,7 +40,7 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 	 */
 	@JavascriptInterface
 	public String onJsCallWithResult(String req){
-		JSRequest request = JSRequest.parse(this.webView, req);
+		JSRequest request = JSRequest.parse(this.webgumView, req);
 		if(request == null || TextUtils.isEmpty(request.pluginName) || TextUtils.isEmpty(request.methodName) || request.id < 0)
 			return new JSResult("9999").toJsonString();
 		try{
@@ -63,7 +66,7 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 	 */
 	@JavascriptInterface
 	public void onJsCallWithListener(String req){
-		JSRequest request = JSRequest.parse(this.webView, req);
+		JSRequest request = JSRequest.parse(this.webgumView, req);
 		JsResponse response = request.createResponse();
 		if(request == null || TextUtils.isEmpty(request.pluginName) || TextUtils.isEmpty(request.methodName) || request.id < 0)
 			return;

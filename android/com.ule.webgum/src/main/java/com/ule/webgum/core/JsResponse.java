@@ -1,12 +1,10 @@
-package com.ule.webgum.sysweb;
+package com.ule.webgum.core;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.webkit.WebView;
 
 import com.ule.webgum.annotation.JSArgumentType;
-import com.ule.webgum.core.JSResult;
 
 /**
  * @Title:
@@ -21,14 +19,14 @@ public class JsResponse {
 	public long id;
 	protected String pluginName;
 	protected String methodName;
-	private WebView webView;
+	private IWebgumView webgumView;
 
 
-	public JsResponse(long id, String pluginName, String methodName, WebView webView) {
+	public JsResponse(long id, String pluginName, String methodName, IWebgumView webgumView) {
 		this.id = id;
 		this.pluginName = pluginName;
 		this.methodName = methodName;
-		this.webView = webView;
+		this.webgumView = webgumView;
 	}
 
 	/**
@@ -52,7 +50,7 @@ public class JsResponse {
 
 				Log.e("JsResponse","" + s);
 
-				webView.loadUrl("javascript:wg.onNativeCallback('"+ s +"')");
+				webgumView.loadUrl("javascript:wg.onNativeCallback('"+ s +"')");
 			}
 		});
 
@@ -66,7 +64,7 @@ public class JsResponse {
 		new Handler(Looper.getMainLooper()).post(new Runnable() {
 			@Override
 			public void run() {
-				webView.loadUrl("javascript:wg.onNativeError('"+ result.toJsonString() +"')");
+				webgumView.loadUrl("javascript:wg.onNativeError('"+ result.toJsonString() +"')");
 			}
 		});
 	}

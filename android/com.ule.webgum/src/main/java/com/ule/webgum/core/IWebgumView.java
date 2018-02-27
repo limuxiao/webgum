@@ -1,5 +1,7 @@
 package com.ule.webgum.core;
 
+import android.content.Context;
+
 import com.ule.webgum.PluginManager;
 
 /**
@@ -39,6 +41,12 @@ public interface IWebgumView {
 	 */
 	void loadUrl(String url);
 
+
+	/**
+	 * 获取Context上下文对象
+	 * @return
+	 */
+	Context getContext();
 
 
 }

@@ -1,7 +1,6 @@
-package com.ule.webgum.sysweb;
+package com.ule.webgum.core;
 
 import android.util.Log;
-import android.webkit.WebView;
 
 import com.ule.webgum.annotation.JSArgumentType;
 
@@ -25,11 +24,11 @@ public final class JSRequest {
 	protected String pluginName;
 	protected String methodName;
 	public List<Parameter> params;
-	public WebView webView;
+	public IWebgumView webgumView;
 
 
-	public JSRequest(WebView webView){
-		this.webView = webView;
+	public JSRequest(IWebgumView webgumView){
+		this.webgumView = webgumView;
 	}
 
 
@@ -38,10 +37,10 @@ public final class JSRequest {
 	 * @param jsonStr
 	 * @return
 	 */
-	public static JSRequest parse(WebView webView, String jsonStr){
+	public static JSRequest parse(IWebgumView webgumView, String jsonStr){
 
 		try {
-			JSRequest parser = new JSRequest(webView);
+			JSRequest parser = new JSRequest(webgumView);
 			JSONObject jsn = new JSONObject(jsonStr);
 			if(jsn.has("id")){
 				parser.id = jsn.optLong("id");
@@ -90,7 +89,7 @@ public final class JSRequest {
 	 * @return
 	 */
 	protected JsResponse createResponse(){
-		return new JsResponse(this.id,this.pluginName,this.methodName,this.webView);
+		return new JsResponse(this.id,this.pluginName,this.methodName,this.webgumView);
 	}
 
 

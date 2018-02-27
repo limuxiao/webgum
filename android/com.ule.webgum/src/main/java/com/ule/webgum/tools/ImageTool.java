@@ -1,4 +1,4 @@
-package com.ule.example.functions.album;
+package com.ule.webgum.tools;
 
 import android.content.Context;
 import android.graphics.Bitmap;

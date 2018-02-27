@@ -1,4 +1,4 @@
-package com.ule.example.functions.album;
+package com.ule.webgum.tools;
 
 import android.content.ContentUris;
 import android.content.Context;

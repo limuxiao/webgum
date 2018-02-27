@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.provider.MediaStore;
 
-import com.ule.example.functions.album.AlbumReply;
-import com.ule.example.functions.album.CameraReply;
-import com.ule.example.functions.common.ReplyManager;
+import com.ule.webgum.replys.AlbumReply;
+import com.ule.webgum.replys.CameraReply;
+import com.ule.webgum.replys.ReplyManager;
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.sysweb.JSRequest;
-import com.ule.webgum.sysweb.JsResponse;
+import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
 
 /**
  * @Title:
@@ -37,7 +37,7 @@ public class CameraPlugin extends IWebgumPlugin {
 	public void openAlbum(JSRequest request, JsResponse response){
 		Intent openAlbumIntent = new Intent("android.intent.action.GET_CONTENT");
 		openAlbumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-		Activity acty = (Activity)request.webView.getContext();
+		Activity acty = (Activity)request.webgumView.getContext();
 		AlbumReply albumReply = new AlbumReply(acty,request,response);
 		ReplyManager.addReply(albumReply);
 		acty.startActivityForResult(openAlbumIntent, albumReply.getId());
@@ -51,7 +51,7 @@ public class CameraPlugin extends IWebgumPlugin {
 	@JSMethod
 	public void openCamera(JSRequest request, JsResponse response){
 		Intent openCameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-		Activity acty = (Activity)request.webView.getContext();
+		Activity acty = (Activity)request.webgumView.getContext();
 		CameraReply cameraReply = new CameraReply(acty,request,response);
 		ReplyManager.addReply(cameraReply);
 		openCameraIntent.putExtra("output", cameraReply.getImgUri());

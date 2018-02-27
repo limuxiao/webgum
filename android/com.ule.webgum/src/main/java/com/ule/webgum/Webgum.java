@@ -5,8 +5,8 @@ import android.text.TextUtils;
 
 import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
-import com.ule.webgum.sysweb.JSRequest;
-import com.ule.webgum.sysweb.JsResponse;
+import com.ule.webgum.core.JSRequest;
+import com.ule.webgum.core.JsResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
