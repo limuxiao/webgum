@@ -21,6 +21,14 @@
             android:onClick="toSystemWebView"/>
 
         <Button
+            android:id="@+id/activity_main_btn_corss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Crosswalk"
+            android:onClick="toCrossWebView"/>
+
+        <Button
             android:id="@+id/activity_main_btn_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,10 +43,6 @@
             android:layout_margin="4dp"
             android:text="添加联系人"
             android:onClick="testAddContacts"/>
-
-
-
-
 
     </LinearLayout>
 

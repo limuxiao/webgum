@@ -1,5 +1,7 @@
 package com.ule.webgum.crosswalkweb;
 
+import android.util.Log;
+
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkView;
 
@@ -18,4 +20,17 @@ public class WgCrosswalkViewCilent extends XWalkResourceClient{
     public WgCrosswalkViewCilent(XWalkView view) {
         super(view);
     }
+
+    @Override
+    public void onLoadStarted(XWalkView view, String url) {
+        super.onLoadStarted(view, url);
+    }
+
+    @Override
+    public void onLoadFinished(XWalkView view, String url) {
+        super.onLoadFinished(view, url);
+    }
+
+
+
 }

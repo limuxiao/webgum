@@ -26,7 +26,7 @@ import com.ule.webgum.Webgum;
  * @Creator: Liy
  * @Version: 1.0
  *
- * {@link IWebgumViewClient}
+ * {@link }
  */
 
 public class SystemWebViewClient extends WebViewClient{
@@ -40,7 +40,6 @@ public class SystemWebViewClient extends WebViewClient{
 			Log.e("SystemWebViewClient","" + preLoadJs);
 		}
 		view.loadUrl("javascript:" + preLoadJs);
-		super.onPageFinished(view, url);
 		super.onPageStarted(view, url, favicon);
 	}
 

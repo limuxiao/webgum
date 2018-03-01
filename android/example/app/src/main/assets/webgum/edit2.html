@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>下拉列表</title>
+        <base target="_self">
+
+        <script type="text/javascript" src="wg_android.js"></script>
+        <script type="text/javascript" src="wg.js"></script>
+
+        <script type="text/javascript">
+
+
+            var MyLog = function () {
+
+                this.clear = function () {
+                    var ele = document.getElementById('sp_result')
+                    ele.innerText = ''
+                }
+
+                this.write = function (data) {
+                    var ele = document.getElementById('sp_result')
+                    ele.innerText = data
+                }
+
+                this.append = function (data) {
+                    var ele = document.getElementById('sp_result')
+                    var str = ele.innerText
+                    str = str + data
+                    ele.innerText = str
+                }
+
+                this.showImg = function(data){
+                    var d = "data:image/jpg;base64," + data
+                    var ele = document.getElementById('img_album')
+                    ele.src = d
+                }
+
+            }
+
+            window.L = new MyLog()
+
+            function jsRun() {
+                try {
+
+                    var str = document.getElementById('tt_edit').value
+                    eval('(function (){'+ str +'})()')
+                }catch (e){
+                    alert(e.message)
+                }
+
+            }
+
+            function jsClear(){
+                document.getElementById('tt_edit').value = ''
+            }
+
+
+
+
+        </script>
+
+
+    </head>
+
+    <body>
+
+
+
+        <div class="div_parent" style="width: 100%; height: 300px; border: 1px solid purple; overflow-y: hidden; overflow-x: auto; white-space: nowrap;">
+
+            <div style="width: 50%; height:300px; float: left;">
+
+                <textarea id="tt_edit"  style="width: 100%; height: 400px; background-color: #CCE8CF"></textarea>
+
+            </div>
+
+
+
+            <div style="width: 50%; height:300px; float: right; background-color: #EEEEEE;">
+
+                <span id="sp_result" style="width: 90%; height: 300px; display: block;white-space:pre-wrap;  padding-left:20px; padding-right: 20px;"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <button id="btn_exe" onclick="jsRun();" style="width: 25%; height: 40px">执行</button>
+        <button id="btn_clear" onclick="jsClear();" style="width: 25%; height: 40px">清空</button>
+        <br/>
+        <img id="img_album" style="width:200px; height:200px" src=""/>
+
+    </body>
+
+</html>

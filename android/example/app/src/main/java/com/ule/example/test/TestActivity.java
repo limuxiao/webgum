@@ -39,7 +39,7 @@ public class TestActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test);
-		webView = findViewById(R.id.activity_test_wv);
+		webView = (WebView) findViewById(R.id.activity_test_wv);
 		initWebView();
 
 

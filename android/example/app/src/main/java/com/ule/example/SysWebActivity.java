@@ -40,7 +40,7 @@ public class SysWebActivity extends Activity{
 		setContentView(R.layout.activity_sys);
 
 
-		webView = findViewById(R.id.acty_sys_wv);
+		webView = (SystemWebView) findViewById(R.id.acty_sys_wv);
 
 		webView.init();
 

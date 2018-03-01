@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ule.example.SysWebActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/acty_sys_ed"
+            android:layout_width="0.0dp"
+            android:layout_height="50dp"
+            android:layout_weight="5.0"
+            android:background="#eeeeee"/>
+
+        <Button
+            android:id="@+id/acty_sys_btn"
+            android:layout_width="0.0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="搜索"
+            android:onClick="onSearch"/>
+
+    </LinearLayout>
+
+    <com.ule.webgum.crosswalkweb.WgCrosswalkWebView
+        android:id="@+id/acty_cross_wv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+</LinearLayout>

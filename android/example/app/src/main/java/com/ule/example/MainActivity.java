@@ -41,6 +41,13 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
+	public void toCrossWebView(View view){
+		Intent intent = new Intent(this, CrossWebActivity.class);
+		startActivity(intent);
+	}
+
+
+
 	/**
 	 * 获取手机通讯录
 	 * @param view
