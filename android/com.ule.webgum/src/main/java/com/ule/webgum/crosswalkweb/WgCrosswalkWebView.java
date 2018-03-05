@@ -40,6 +40,11 @@ public class WgCrosswalkWebView extends XWalkView implements IWebgumView{
         this.pluginManager = Webgum.createManager();
         setResourceClient(new WgCrosswalkViewCilent(this));
         setUIClient(new WgCrosswalkChromeClient(this));
+        getUserAgentString();
+        StringBuilder sb = new StringBuilder(getUserAgentString());
+        sb.append(" Webgum/" + MainPlugin.WEBGUM_VERSION + " (" + MainPlugin.WEBGUM_OS + ")");
+        setUserAgentString(sb.toString());
+
         addJavascriptInterface(new WgCrosswalkJS(this), "wg_android_native");
     }
 
