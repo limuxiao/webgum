@@ -19,6 +19,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.ule.example.test.TestActivity;
+
 import java.io.InputStream;
 
 
@@ -43,6 +45,11 @@ public class MainActivity extends Activity {
 
 	public void toCrossWebView(View view){
 		Intent intent = new Intent(this, CrossWebActivity.class);
+		startActivity(intent);
+	}
+
+	public void toTestPage(View view){
+		Intent intent = new Intent(this, TestActivity.class);
 		startActivity(intent);
 	}
 

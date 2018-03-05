@@ -6,7 +6,6 @@
         <title>下拉列表</title>
         <base target="_self">
 
-        <script type="text/javascript" src="wg_android.js"></script>
         <script type="text/javascript" src="wg.js"></script>
 
         <script type="text/javascript">
@@ -57,6 +56,15 @@
             }
 
 
+        function jsTest(){
+            try{
+                alert(test)
+                alert(window.test);
+            }catch(e){
+                alert(e.message);
+            }
+
+        }
 
 
         </script>
@@ -92,6 +100,7 @@
 
         <button id="btn_exe" onclick="jsRun();" style="width: 25%; height: 40px">执行</button>
         <button id="btn_clear" onclick="jsClear();" style="width: 25%; height: 40px">清空</button>
+        <button id="btn_test" onclick="jsTest();" style="width: 25%; height: 40px">测试</button>
         <br/>
         <img id="img_album" style="width:200px; height:200px" src=""/>
 

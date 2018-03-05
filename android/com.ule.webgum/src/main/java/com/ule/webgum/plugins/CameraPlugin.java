@@ -1,4 +1,4 @@
-package com.ule.example.plugins;
+package com.ule.webgum.plugins;
 
 import android.app.Activity;
 import android.content.Intent;

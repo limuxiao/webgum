@@ -1,11 +1,10 @@
-package com.ule.webgum.core;
+package com.ule.webgum.plugins;
 
-import com.ule.webgum.core.IJSWebgumAbs;
 import com.ule.webgum.core.IWebgumPlugin;
+import com.ule.webgum.core.IWebgumView;
 import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JSResult;
 import com.ule.webgum.core.JsResponse;
-import com.ule.webgum.sysweb.SystemWebView;
 import com.ule.webgum.tools.SystemTool;
 
 import java.util.ArrayList;
@@ -19,14 +18,21 @@ import java.util.List;
  * @Version: 1.0
  */
 
-final public class JSWebgumImpl extends IJSWebgumAbs {
+final public class MainPlugin extends IWebgumPlugin{
 
-	public JSWebgumImpl(IWebgumView webgumView) {
-		super(webgumView);
+
+	public static final String WEBGUM_VERSION = "1.0.0";
+	public static final String WEBGUM_OS = "Android";
+	public static final String PLUGIN_NAME = "main";
+	public static final String PLUGIN_VERSION = "1.0.0";
+
+
+	public MainPlugin() {
+		super(PLUGIN_NAME, PLUGIN_VERSION);
 	}
 
-	@Override
-	public String getOsInfo() {
+
+	public String getOsInfo(JSRequest request) {
 		JSResult<String> jsResult = new JSResult<>();
 		jsResult.put("osName", WEBGUM_OS);
 		jsResult.put("osVersion", SystemTool.getSystemVersion());
@@ -36,14 +42,16 @@ final public class JSWebgumImpl extends IJSWebgumAbs {
 		return jsResult.toJsonString();
 	}
 
-	@Override
-	public String getPlugins() {
+	public String getPlugins(JSRequest request) {
 		JSResult result = new JSResult();
 
 		List<String> list = new ArrayList<>();
 
-		for(IWebgumPlugin plugin : this.webgumView.getPluginManager().pluginMap.values()){
-			list.add(plugin.getName());
+		for(IWebgumPlugin plugin : request.webgumView.getPluginManager().pluginMap.values()){
+			if(!"main".equals(plugin.getName())){
+				list.add(plugin.getName());
+			}
+
 		}
 		result.put("plugins",list);
 		return result.toJsonString();

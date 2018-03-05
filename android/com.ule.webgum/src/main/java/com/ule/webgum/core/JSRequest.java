@@ -21,8 +21,8 @@ import java.util.List;
 public final class JSRequest {
 
 	public long id;
-	protected String pluginName;
-	protected String methodName;
+	public String pluginName;
+	public String methodName;
 	public List<Parameter> params;
 	public IWebgumView webgumView;
 
@@ -88,7 +88,7 @@ public final class JSRequest {
 	 * 生成一个与本JSRequest对象相对应的JSResponse对象
 	 * @return
 	 */
-	protected JsResponse createResponse(){
+	public JsResponse createResponse(){
 		return new JsResponse(this.id,this.pluginName,this.methodName,this.webgumView);
 	}
 

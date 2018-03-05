@@ -33,11 +33,12 @@ public class WgCrosswalkChromeClient extends XWalkUIClient{
 
     @Override
     public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
-//        if(TextUtils.isEmpty(preLoadJs)){
-//            preLoadJs = Webgum.getPreLoadJs();
-//        }
+        if(TextUtils.isEmpty(preLoadJs)){
+            preLoadJs = Webgum.getPreLoadJs();
+        }
 //        Log.e("WgCrosswalkWebView","注入成功");
-//        view.evaluateJavascript(preLoadJs,null);
+        view.evaluateJavascript(preLoadJs,null);
+        view.evaluateJavascript("onNativeLoadOver();",null);
         super.onPageLoadStopped(view, url, status);
     }
 }

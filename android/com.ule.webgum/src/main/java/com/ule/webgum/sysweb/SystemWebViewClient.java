@@ -35,11 +35,7 @@ public class SystemWebViewClient extends WebViewClient{
 
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon) {
-		if(TextUtils.isEmpty(preLoadJs)){
-			preLoadJs = Webgum.getPreLoadJs();
-			Log.e("SystemWebViewClient","" + preLoadJs);
-		}
-		view.loadUrl("javascript:" + preLoadJs);
+
 		super.onPageStarted(view, url, favicon);
 	}
 
@@ -50,6 +46,13 @@ public class SystemWebViewClient extends WebViewClient{
 
 	@Override
 	public void onPageFinished(WebView view, final String url) {
+		if(TextUtils.isEmpty(preLoadJs)){
+			preLoadJs = Webgum.getPreLoadJs();
+			Log.e("SystemWebViewClient","" + preLoadJs);
+		}
+		view.loadUrl("javascript:" + preLoadJs);
+		view.loadUrl("javascript:onNativeLoadOver()");
+		super.onPageFinished(view, url);
 		view.invalidate();
 	}
 

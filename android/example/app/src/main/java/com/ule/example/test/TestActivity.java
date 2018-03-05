@@ -11,10 +11,12 @@ import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.ule.example.R;
+import com.ule.webgum.Webgum;
 import com.ule.webgum.sysweb.SystemWebSettingTool;
 
 import java.io.IOException;
@@ -43,12 +45,50 @@ public class TestActivity extends Activity {
 		initWebView();
 
 
-		String url = "file:///android_asset/webgum/index.html";
+		String url = "file:///android_asset/webgum/edit2.html";
 		webView.loadUrl(url);
 	}
 
 	void initWebView(){
-		SystemWebSettingTool.settingWebView(getApplicationContext(), webView);
+
+
+		WebSettings webSettings = webView.getSettings();
+
+		webSettings.setAllowContentAccess(true);
+		webSettings.setAllowFileAccess(true);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			webSettings.setAllowFileAccessFromFileURLs(true);
+			webSettings.setAllowUniversalAccessFromFileURLs(true);
+		}
+
+		webSettings.setAppCacheEnabled(false);
+		webSettings.setAppCachePath(getApplicationContext().getCacheDir().toString());
+		webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webSettings.setDatabaseEnabled(true);
+		webSettings.setDomStorageEnabled(true);
+		webSettings.setGeolocationDatabasePath(getApplicationContext().getFilesDir().toString());
+
+		webSettings.setSupportZoom(true);
+		webSettings.setBuiltInZoomControls(true);
+		webSettings.setDisplayZoomControls(false);
+
+		webSettings.setDefaultTextEncodingName("UTF-8");
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			webSettings.setLoadsImagesAutomatically(true);
+		} else {
+			webSettings.setLoadsImagesAutomatically(false);
+		}
+
+		webSettings.setLoadWithOverviewMode(true);
+		webSettings.setTextZoom(100);
+		webSettings.setUseWideViewPort(true);
+		webSettings.setBlockNetworkImage(false);
+		webSettings.setJavaScriptEnabled(true);
+		webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+		webSettings.setGeolocationEnabled(true);
+		webSettings.setSupportMultipleWindows(false);
+		webSettings.setSaveFormData(true);
+
 
 		webView.setWebViewClient(webViewClient);
 		webView.setWebChromeClient(webChromeClient);
@@ -70,14 +110,15 @@ public class TestActivity extends Activity {
 			return super.shouldOverrideUrlLoading(view, request);
 		}
 
+		@RequiresApi(api = Build.VERSION_CODES.KITKAT)
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			Log.e("TestActivity","onPageStarted");
-			Log.e("TestActivity","url:" + url);
 			if(TextUtils.isEmpty(preLoadJs)){
+				Log.e("TestActivity","load js");
 				preLoadJs = buildJsInject();
 			}
-			webView.loadUrl("javascript:" + preLoadJs);
+			view.evaluateJavascript("javascript:" + preLoadJs, null);
 			super.onPageStarted(view, url, favicon);
 
 		}
@@ -92,33 +133,15 @@ public class TestActivity extends Activity {
 			Log.e("TestActivity","onPageFinished");
 //			if(TextUtils.isEmpty(preLoadJs)){
 //				preLoadJs = buildJsInject();
+//				preLoadJs = Webgum.getPreLoadJs();
 //			}
-//			webView.loadUrl("javascript:" + preLoadJs);
+//			view.loadUrl("javascript:" + preLoadJs);
 			super.onPageFinished(view, url);
 		}
 	};
 
 	private WebChromeClient webChromeClient = new WebChromeClient() {
 
-		@Override
-		public void onProgressChanged(WebView view, int progress) {
-			super.onProgressChanged(view, progress);
-		}
-
-		@Override
-		public void onReceivedTitle(WebView view, String title) {
-			super.onReceivedTitle(view, title);
-		}
-
-		@Override
-		public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-			return super.onJsAlert(view, url, message, result);
-		}
-
-		@Override
-		public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
-			return super.onJsPrompt(view, url, message, defaultValue, result);
-		}
 	};
 
 

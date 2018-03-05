@@ -1,4 +1,4 @@
-package com.ule.example.plugins;
+package com.ule.webgum.plugins;
 
 import com.ule.webgum.core.IWebgumPlugin;
 

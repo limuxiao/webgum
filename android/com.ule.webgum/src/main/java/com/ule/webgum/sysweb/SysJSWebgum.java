@@ -1,15 +1,15 @@
-package com.ule.webgum.core;
+package com.ule.webgum.sysweb;
 
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 
 import com.ule.webgum.PluginManager;
-import com.ule.webgum.core.IJSWebgum;
 import com.ule.webgum.core.IWebgumPlugin;
 import com.ule.webgum.core.IWebgumView;
 import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JSResult;
 import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.plugins.MainPlugin;
 
 import java.lang.reflect.Method;
 
@@ -21,14 +21,14 @@ import java.lang.reflect.Method;
  * @Version: 1.0
  */
 
-public abstract class IJSWebgumAbs implements IJSWebgum {
+final class SysJSWebgum {
 
 	public static final String PLUGIN_MAIN = "__main__";
 
 	protected PluginManager pluginManager;
 	protected IWebgumView webgumView;
 
-	public IJSWebgumAbs(IWebgumView webgumView) {
+	public SysJSWebgum(IWebgumView webgumView) {
 		this.webgumView = webgumView;
 		this.pluginManager = this.webgumView.getPluginManager();
 	}
@@ -86,7 +86,8 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 
 	//调用本对象里的方法
 	private String callMainWithResult(JSRequest request) throws Exception{
-		return invokeWithResult(this, request);
+		IWebgumPlugin plugin = this.pluginManager.getPlugin(MainPlugin.PLUGIN_NAME);
+		return invokeWithResult(plugin, request);
 	}
 
 	//调用插件中的方法
@@ -100,7 +101,8 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 
 	//调用本对象里的方法
 	private void callMainWithListener(JSRequest request,JsResponse response) throws Exception{
-		invokeWithListener(this, request, response);
+		IWebgumPlugin plugin = this.pluginManager.getPlugin(MainPlugin.PLUGIN_NAME);
+		invokeWithListener(plugin, request, response);
 	}
 
 	//调用插件中的方法
@@ -113,13 +115,9 @@ public abstract class IJSWebgumAbs implements IJSWebgum {
 
 	//反射调用方法
 	private String invokeWithResult(Object obj, JSRequest request) throws Exception{
-		if(request.params == null || request.params.size() <= 0){				//没有参数，调用无参方法
-			Method method = obj.getClass().getMethod(request.methodName);
-			return String.valueOf(method.invoke(obj));
-		}else{
-			Method method = obj.getClass().getMethod(request.methodName, new Class<?>[]{JSRequest.class});
-			return String.valueOf(method.invoke(obj, request));
-		}
+		Method method = obj.getClass().getMethod(request.methodName, new Class<?>[]{JSRequest.class});
+		return String.valueOf(method.invoke(obj, request));
+
 	}
 
 	//反射调用方法

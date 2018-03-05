@@ -7,6 +7,7 @@ import com.ule.webgum.annotation.JSMethod;
 import com.ule.webgum.core.IWebgumPlugin;
 import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JsResponse;
+import com.ule.webgum.plugins.MainPlugin;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,6 +41,7 @@ final public class Webgum {
 	 */
 	public final static void init(Context context){
 		loadJsFile(context);
+		plugins.add(new MainPlugin());
 	}
 
 	/**

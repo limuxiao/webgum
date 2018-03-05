@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import com.ule.webgum.PluginManager;
 import com.ule.webgum.Webgum;
 import com.ule.webgum.core.IWebgumView;
-import com.ule.webgum.core.JSWebgumImpl;
+import com.ule.webgum.plugins.MainPlugin;
 
 import org.xwalk.core.XWalkView;
 
@@ -40,7 +40,7 @@ public class WgCrosswalkWebView extends XWalkView implements IWebgumView{
         this.pluginManager = Webgum.createManager();
         setResourceClient(new WgCrosswalkViewCilent(this));
         setUIClient(new WgCrosswalkChromeClient(this));
-        addJavascriptInterface(new JSWebgumImpl(this), "wg_android_native");
+        addJavascriptInterface(new WgCrosswalkJS(this), "wg_android_native");
     }
 
     @Override

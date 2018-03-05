@@ -6,8 +6,7 @@
  * @Version: 1.0.1
  *
  */
-(function (){
-
+function onNativeLoadOver(){
 
     try {
 
@@ -39,12 +38,10 @@
         }
 
         window.wg = wg
-        alert(wg)
+        alert('---1111---')
 
     }catch (e){
         alert(e.message)
     }
 
-
-
-})()
+}

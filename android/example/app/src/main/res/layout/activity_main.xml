@@ -44,6 +44,15 @@
             android:text="添加联系人"
             android:onClick="testAddContacts"/>
 
+        <Button
+            android:id="@+id/activity_main_btn_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="测试页面"
+            android:onClick="toTestPage"/>
+
+
     </LinearLayout>
 
 </FrameLayout>
