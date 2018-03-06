@@ -107,8 +107,11 @@ public final class JSRequest {
 	 * @return
 	 */
 	public Parameter getParam(int index){
-		if (params == null) return null;
-		return params.get(index);
+		try{
+			return params.get(index);
+		}catch (Exception e){
+			return null;
+		}
 	}
 
 

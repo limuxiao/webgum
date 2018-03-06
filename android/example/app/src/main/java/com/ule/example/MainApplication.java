@@ -3,6 +3,7 @@ package com.ule.example;
 import android.app.Application;
 
 import com.ule.webgum.Webgum;
+import com.ule.webgum.plugins.MainPlugin;
 
 /**
  * @Title:
@@ -25,6 +26,7 @@ public class MainApplication extends Application {
     private void initWebgum(){
         //下面两步应该放在Application中操作
         Webgum.init(this);
+        Webgum.setMainPlugin(new MainPlugin());
         Webgum.addPlugins(PluginsConfig.loadPlugins(this));
     }
 

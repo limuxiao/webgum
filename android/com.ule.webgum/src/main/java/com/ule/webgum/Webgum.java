@@ -8,6 +8,7 @@ import com.ule.webgum.core.IWebgumPlugin;
 import com.ule.webgum.core.JSRequest;
 import com.ule.webgum.core.JsResponse;
 import com.ule.webgum.plugins.MainPlugin;
+import com.ule.webgum.plugins.MainPluginAbs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,8 +42,13 @@ final public class Webgum {
 	 */
 	public final static void init(Context context){
 		loadJsFile(context);
-		plugins.add(new MainPlugin());
 	}
+
+
+	public final static void setMainPlugin(MainPluginAbs mainPlugin){
+		plugins.add(mainPlugin);
+	}
+
 
 	/**
 	 * 读取注入js文件

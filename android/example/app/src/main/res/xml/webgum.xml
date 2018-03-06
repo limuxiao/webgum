@@ -11,4 +11,6 @@
 
     <feature name="network" version="1.0.0" value="com.ule.webgum.plugins.NetWorkPlugin"/>
 
+    <feature name="tel" version="1.0.0" value="com.ule.webgum.plugins.TelPlugin"/>
+
 </widget>

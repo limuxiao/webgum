@@ -1,5 +1,7 @@
 package com.ule.webgum.plugins;
 
+import android.util.Log;
+
 import com.ule.webgum.core.IWebgumPlugin;
 import com.ule.webgum.core.IWebgumView;
 import com.ule.webgum.core.JSRequest;
@@ -18,20 +20,20 @@ import java.util.List;
  * @Version: 1.0
  */
 
-final public class MainPlugin extends IWebgumPlugin{
+final public class MainPlugin extends MainPluginAbs{
 
 
 	public static final String WEBGUM_VERSION = "1.0.0";
 	public static final String WEBGUM_OS = "Android";
-	public static final String PLUGIN_NAME = "main";
 	public static final String PLUGIN_VERSION = "1.0.0";
 
 
 	public MainPlugin() {
-		super(PLUGIN_NAME, PLUGIN_VERSION);
+		super(PLUGIN_VERSION);
 	}
 
 
+	@Override
 	public String getOsInfo(JSRequest request) {
 		JSResult<String> jsResult = new JSResult<>();
 		jsResult.put("osName", WEBGUM_OS);
@@ -42,7 +44,11 @@ final public class MainPlugin extends IWebgumPlugin{
 		return jsResult.toJsonString();
 	}
 
+	@Override
 	public String getPlugins(JSRequest request) {
+
+		Log.e("MainPlugin","getPlugins");
+
 		JSResult result = new JSResult();
 
 		List<String> list = new ArrayList<>();
@@ -58,6 +64,7 @@ final public class MainPlugin extends IWebgumPlugin{
 	}
 
 
+	//这是一个扩展的主体方法
 	public void testCall(JSRequest request, JsResponse response){
 		JSRequest.Parameter parameter = request.getParam(0);
 		JSResult result = new JSResult();
