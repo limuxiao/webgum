@@ -70,7 +70,7 @@ public class CameraReply implements IReply {
                         imageBase64 = imageBase64.replaceAll("\n","");
                         JSResult result = new JSResult();
                         result.put("imagePath", getImgUri().getPath());
-                        result.put("imageBase64", imageBase64);
+                        result.put("imageBase64", "data:image/jpg;base64," + imageBase64);
                         response.send(param, result);
                     } else {
                         response.send(param, new JSResult(false,"9990","用户取消"));

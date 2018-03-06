@@ -74,11 +74,9 @@ public class AlbumReply implements IReply {
                 String imageBase64 = ImageTool.bitmapToBase64(bitmap,100);
                 imageBase64 = imageBase64.replaceAll("\n","");
 
-                Log.e("AlbumReply",imageBase64);
-
                 JSResult result = new JSResult();
                 result.put("imagePath", path);
-                result.put("imageBase64", imageBase64);
+                result.put("imageBase64", "data:image/jpg;base64," + imageBase64);
                 response.send(param, result);
             } else {
                 response.send(param, new JSResult(false,"9990","用户取消"));
