@@ -16,7 +16,6 @@ public abstract class IWebgumPlugin {
 
 	private String pluginName;
 	private String pluginVersion;
-	protected WebView webView;
 
 	public IWebgumPlugin(String pluginName, String pluginVersion){
 		this.pluginName = pluginName;
@@ -44,11 +43,4 @@ public abstract class IWebgumPlugin {
 		return pluginVersion;
 	}
 
-	public void setWebView(WebView webView) {
-		this.webView = webView;
-	}
-
-	public WebView getWebView() {
-		return webView;
-	}
 }

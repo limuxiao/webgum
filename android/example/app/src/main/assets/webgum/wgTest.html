@@ -13,17 +13,8 @@
 
 		function testGetOS(){
 			try{
-				var ret = wg.getOS()
-				alert(ret)
-				var plugins = wg.getPlugins()
-				alert(plugins)
-				var battery = wg.getPlugin('battery')
-				var power = battery.getPower()
-				alert(power)
-				wg.addListener("location","localCollect",{timeInterval:"5000"},function(value){
-					alert(value)
-				})
-
+				var ret = wg.getOsInfo()
+				alert(JSON.stringify(ret))
 			}catch(e){
 				alert(e.message)
 			}
@@ -91,6 +82,29 @@
 
 		}
 
+		function getTel(){
+
+
+
+			try{
+
+				// wg.tel.toPhoneList(function(data){
+				//	alert(JSON.stringify(data))
+				// })
+
+
+				var t = wg.getPlugin('tel')
+				t.toPhoneList(function(data){
+					alert(JSON.stringify(data))
+				 })
+
+
+			}catch(e){
+				alert(e.message)
+			}
+
+		}
+
 	</script>
 
 	<h1>WgTest</h1>
@@ -103,6 +117,7 @@
 		<button id="btn_batteryList" onclick="onBatteryList();">监听电量变化</button><br/>
 		<button id="btn_testName" onclick="getPluginInfo();">获取插件信息</button><br/>
 		<button id="btn_testObj" onclick="getTest();">测试传递对象</button><br/>
+		<button id="btn_tel" onclick="getTel();">打开通讯录</button><br/>
 		<button id="btn_test" onclick="alert('hhhh');">测试</button><br/>
 		<a href="http://www.baidu.com" >测试监听跳转</a>
 

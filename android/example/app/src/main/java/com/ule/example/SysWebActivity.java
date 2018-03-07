@@ -42,9 +42,11 @@ public class SysWebActivity extends Activity{
 
 		webView = (SystemWebView) findViewById(R.id.acty_sys_wv);
 
+
+
 		webView.init();
 
-		String url = "file:///android_asset/webgum/edit.html";
+		String url = "file:///android_asset/webgum/wgTest.html";
 		webView.loadUrl(url);
 
 

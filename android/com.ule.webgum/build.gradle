@@ -15,7 +15,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            // 混淆
+            minifyEnabled true
+
+            //对齐
+            zipAlignEnabled true
+
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
